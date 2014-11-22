@@ -51,8 +51,6 @@ static DatabaseManager *sharedInstance = nil;
     {
         [self.managedObjectContext insertObject:objectToBeInserted];
         [self.managedObjectContext save:error];
-        
-        
     }
 }
 
@@ -61,8 +59,6 @@ static DatabaseManager *sharedInstance = nil;
     @synchronized(_managedObjectContext)
     {
         [self.managedObjectContext save:error];
-        
-        
     }
 }
 
@@ -81,7 +77,6 @@ static DatabaseManager *sharedInstance = nil;
     // Check if the context doesn't already exist
     if (!_managedObjectContext)
     {
-        
         // generic variable to hold any error occurred during context creation
         NSError *error = nil;
         
