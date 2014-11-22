@@ -8,15 +8,15 @@
 
 #import "CityBO.h"
 #import "FlickerBO.h"
-#import "AppDelegate.h"
+#import "DatabaseManager.h"
 #import "Constants.h"
 
 @implementation CityBO
 
 +(void)remove:(City*)city
 {
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.managedObjectContext deleteObject:city];
+    DatabaseManager * databaseManager = [DatabaseManager sharedInstance];
+    [databaseManager executeSynchronizedDelete:city error:nil];
 }
 
 +(void)setSelectedCity:(City *)city
@@ -34,8 +34,8 @@
     
     if (cityName.length > 0 && cityCountry.length > 0) {
 
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        city = [City cityFromName:cityName andCountry:cityCountry inManagedObjectContext:appDelegate.managedObjectContext];
+        DatabaseManager * databaseManager = [DatabaseManager sharedInstance];
+        city = [City cityFromName:cityName andCountry:cityCountry inManagedObjectContext:databaseManager.managedObjectContext];
     }
     
     return city;
@@ -43,14 +43,17 @@
 
 +(NSArray *)all
 {
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    return [City citiesInManagedObjectContext:appDelegate.managedObjectContext];
+    DatabaseManager * databaseManager = [DatabaseManager sharedInstance];
+    return [City citiesInManagedObjectContext:databaseManager.managedObjectContext];
 }
 
 + (City *)addWithRepresentation:(NSDictionary *)representation
 {
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    return [City cityWithWorldWeatherData:representation inManagedObjectContext:appDelegate.managedObjectContext];
+    DatabaseManager * databaseManager = [DatabaseManager sharedInstance];
+    City * city = [City cityWithWorldWeatherData:representation inManagedObjectContext:databaseManager.managedObjectContext];
+    [databaseManager executeSynchronizedInsert:city error:nil];
+    
+    return city;
 }
 
 #pragma mark - Web Service
