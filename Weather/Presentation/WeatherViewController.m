@@ -15,6 +15,8 @@
 #import "BackgroungManager.h"
 #import "UIImageView+AFNetworking.h"
 
+#define MAS_SHORTHAND
+
 @interface WeatherViewController()
 
 @property (nonatomic, strong) NSMutableArray * datasource;
@@ -39,7 +41,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    [self addBlurEffect];
+//    [self addBlurEffect];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -93,9 +95,10 @@
     UIVisualEffect *blurEffect;
     blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     
-    UIVisualEffectView *visualEffectView;
+    UIVisualEffectView * visualEffectView;
     visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    visualEffectView.frame = [[UIScreen mainScreen] bounds];
+    
+    
     [self.backgroundImageView addSubview:visualEffectView];
 }
 

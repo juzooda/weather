@@ -1,8 +1,9 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '8.1'
 
 target "Weather" do
     
+pod 'Masonry', '~> 0.5'
 pod 'AFNetworking', '~> 2.4'
 pod 'Reachability', '~> 3.1'
 
