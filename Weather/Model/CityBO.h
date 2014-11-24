@@ -18,7 +18,8 @@
 + (City *)getSelected;
 + (void)setSelectedCity:(City *)city;
 + (City *)addWithRepresentation:(NSDictionary *)representation;
-- (void)findByName:(NSString *)name withCompletionBlock:(void (^)(NSArray * cities))completion;
-- (void)weatherFrom:(City *)city withCompletionBlock:(void (^)(Weather * currentWeather, NSArray * weathers))completion;
+
+- (void)executeRequestByCityName:(NSString *)name withCompletionBlock:(void (^)(NSArray * cities))completion;
+- (void)executeRequestForWeatherInCity:(City *)city withCompletionBlock:(void (^)(Weather * currentWeather, NSArray * weathers))completion;
 
 @end

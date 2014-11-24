@@ -30,7 +30,7 @@ describe(@"CityBO functionalities", ^{
     });
     
     it (@"Cities array should not be nil with a valid City name.", ^{
-        [cityBO findByName:@"Dublin" withCompletionBlock:^(NSArray *cities) {
+        [cityBO executeRequestByCityName:@"Dublin" withCompletionBlock:^(NSArray *cities) {
             expect(cities).notTo.beNil();
         }];
     });

@@ -84,11 +84,10 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
     
         City * city = [self.datasource objectAtIndex:indexPath.row];
-        
+
         [CityBO remove:city];
         
         [self updateDataSource];
-        
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }

@@ -58,7 +58,7 @@
 
 #pragma mark - Web Service
 
-- (void)findByName:(NSString *)cityName withCompletionBlock:(void (^)(NSArray * cities))completion
+- (void)executeRequestByCityName:(NSString *)cityName withCompletionBlock:(void (^)(NSArray * cities))completion
 {
     NSDictionary * parameters = @{@"q":cityName, @"timezone":@"yes", @"key":kApiKey, @"format":@"json"};
     
@@ -105,7 +105,7 @@
     }];
 }
 
-- (void)weatherFrom:(City *)city withCompletionBlock:(void (^)(Weather * currentWeather, NSArray * weathers))completion
+- (void)executeRequestForWeatherInCity:(City *)city withCompletionBlock:(void (^)(Weather * currentWeather, NSArray * weathers))completion
 {
     NSString * cityLatLong = [NSString stringWithFormat:@"%@,%@", city.latitude, city.longitude];
     NSDictionary * parameters = @{@"q":cityLatLong, @"key":kApiKey, @"format":@"json"};

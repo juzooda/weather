@@ -75,7 +75,7 @@
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    [cityBO findByName:searchText withCompletionBlock:^(NSArray *cities) {
+    [cityBO executeRequestByCityName:searchText withCompletionBlock:^(NSArray *cities) {
         
         self.datasource = cities;
         [self.tableView reloadData];

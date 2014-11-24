@@ -7,7 +7,8 @@
 //
 
 #import "City.h"
-
+#import "DatabaseManager.h"
+#import "Constants.h"
 
 @implementation City
 
@@ -17,5 +18,17 @@
 @dynamic longitude;
 @dynamic offset;
 @dynamic url;
+
+- (id)init
+{
+    // integration with coredata
+    NSManagedObjectContext *context = [[DatabaseManager sharedInstance] managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:kCityEntityName inManagedObjectContext:context];
+    
+    // initialize object
+    self = [[City alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:nil];
+    
+    return self;
+}
 
 @end

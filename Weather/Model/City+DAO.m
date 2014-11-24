@@ -26,7 +26,6 @@
 
 + (City *)cityWithWorldWeatherData:(NSDictionary *)cityRepresentation inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    
     City * city = [self cityFromName:[cityRepresentation valueForKey:kCityName]
                           andCountry:[cityRepresentation valueForKey:kCityCountry]
               inManagedObjectContext:context];

@@ -41,7 +41,6 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self addBlurEffect];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -57,7 +56,7 @@
         self.title = self.selectedCity.name;
         CityBO * cityBO = [[CityBO alloc] init];
         
-        [cityBO weatherFrom:self.selectedCity withCompletionBlock:^(Weather * currentWeather, NSArray * weathers) {
+        [cityBO executeRequestForWeatherInCity:self.selectedCity withCompletionBlock:^(Weather * currentWeather, NSArray * weathers) {
             
             [self hideViewElements:NO];
             
@@ -90,18 +89,6 @@
     [self.cityNameLabel setHidden:hide];
 }
 
--(void)addBlurEffect
-{
-    UIVisualEffect *blurEffect;
-    blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    
-    UIVisualEffectView * visualEffectView;
-    visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    
-    
-    [self.backgroundImageView addSubview:visualEffectView];
-}
-
 #pragma mark - Data Controls
 
 -(void)updateDataSource:(NSArray *)weathers
@@ -132,10 +119,11 @@
 {
     DayTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"dayCell"];
     Weather * weather = [self.datasource objectAtIndex:indexPath.row];
+    
     NSDate * day = [DateFormatter dateFromString:weather.date withOffSet:weather.city.offset];
     [cell.dayLabel setText:[DateFormatter weekDayFromDate:day]];
-    NSNumber * temperature = self.fahrenheit ? weather.temperatureF : weather.temperatureC;
     
+    NSNumber * temperature = self.fahrenheit ? weather.temperatureF : weather.temperatureC;
     [cell.temperatureLabel setText:[NSString stringWithFormat:@"%@˚", temperature]];
     
     return cell;
