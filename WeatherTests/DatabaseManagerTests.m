@@ -37,26 +37,56 @@ describe(@"DatabaseManager Init methods", ^{
 
 });
 
-describe(@"DatabaseManager database access methods", ^{
+describe(@"DatabaseManager -", ^{
 
-    __block City * city;
+    __block City *city;
+    __block NSFetchRequest *request;
+    __block DatabaseManager * databaseManager;
     
     before(^{
         city = [[City alloc] init];
-        city.name = @"Dublin";
-        city.country = @"Ireland";
+        city.name = @"Rafael";
+        city.country = @"Maripua";
+        
+        request = [NSFetchRequest fetchRequestWithEntityName:kCityEntityName];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:kCityName ascending:YES]];
+        databaseManager = [[DatabaseManager alloc] init];
     });
     
-//    it(@"Should Execute syncronzed fetch request", ^{
-//        
-//        [[DatabaseManager sharedInstance] executeSynchronizedFetchRequest:nil error:nil];
-//        
-//    });
-//    
-//    it(@"Should Insert an object in database", ^{
-//        [[DatabaseManager sharedInstance] executeSynchronizedInsert:city error:nil];
-//        
-//    });
+    
+    it(@"Should be able to fetch objects from database", ^{
+        
+        NSArray * results = [databaseManager executeSynchronizedFetchRequest:request error:nil];
+        expect(results).notTo.beEmpty();
+        
+    });
+
+    it(@"Should Insert an object in database", ^{
+        
+        [[DatabaseManager sharedInstance] executeSynchronizedInsert:city error:nil];
+        
+        request.predicate = [NSPredicate predicateWithFormat:@"name like %@ AND country like %@",city.name, city.country];
+        NSArray * cityResultList = [databaseManager executeSynchronizedFetchRequest:request error:nil];
+        
+        expect(cityResultList).notTo.beEmpty();
+        
+        City * cityResult = [cityResultList firstObject];
+        NSLog(@"%@", cityResult);
+        
+        expect(cityResult.name).to.equal(@"Rafael");
+        expect(cityResult.country).to.equal(@"Maripua");
+        
+    });
+    
+    it(@"Should Delete an object in database", ^{
+        
+        [[DatabaseManager sharedInstance] executeSynchronizedDelete:city error:nil];
+        
+        request.predicate = [NSPredicate predicateWithFormat:@"name like %@ AND country like %@",city.name, city.country];
+        NSArray * cityResultList = [databaseManager executeSynchronizedFetchRequest:request error:nil];
+        
+        expect(cityResultList).to.beEmpty();
+    });
     
 });
 

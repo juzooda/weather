@@ -18,5 +18,6 @@
 - (void)executeSynchronizedUpdate:(NSManagedObject *)objectToBeUpdated error:(NSError **)error;
 - (void)executeSynchronizedDelete:(NSManagedObject *)objectToBeDeleted error:(NSError **)error;
 - (NSArray *)executeSynchronizedFetchRequest:(NSFetchRequest *)request error:(NSError **)error;
+- (NSString *) executeSynchronized;
 
 @end

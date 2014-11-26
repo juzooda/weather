@@ -37,6 +37,11 @@ static DatabaseManager *sharedInstance = nil;
     return [self sharedInstance];
 }
 
+- (NSString *) executeSynchronized
+{
+    return nil;
+}
+
 - (NSArray *) executeSynchronizedFetchRequest:(NSFetchRequest *)request error:(NSError **)error
 {
     @synchronized(_managedObjectContext)
