@@ -16,7 +16,7 @@
     [dateFormat setDateFormat:@"yyyyMMdd"];
     NSString *cleanString = [stringDate stringByReplacingOccurrencesOfString:@"-" withString:@""];
     NSDate *date = [dateFormat dateFromString:cleanString];
-    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"];
+    [dateFormat setDateFormat:@"EEEE MMMM d, YYYY"]; // make a constant
     
     return date;
 }

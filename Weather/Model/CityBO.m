@@ -25,14 +25,14 @@
     [[NSUserDefaults standardUserDefaults] setObject:city.country forKey:kCityCountry];
 }
 
-+(City *)getSelected
++(City *)applicationLastSelectedCity
 {
     NSString *cityName = [[NSUserDefaults standardUserDefaults] stringForKey:kCityName];
     NSString *cityCountry = [[NSUserDefaults standardUserDefaults] stringForKey:kCityCountry];
     
-    City * city;
+    City *city;
     
-    if (cityName.length > 0 && cityCountry.length > 0) {
+    if (cityName && cityName.length > 0 && cityCountry.length > 0) {
 
         DatabaseManager * databaseManager = [DatabaseManager sharedInstance];
         city = [City cityFromName:cityName andCountry:cityCountry inManagedObjectContext:databaseManager.managedObjectContext];
@@ -43,14 +43,15 @@
 
 +(NSArray *)all
 {
-    DatabaseManager * databaseManager = [DatabaseManager sharedInstance];
+    DatabaseManager *databaseManager = [DatabaseManager sharedInstance];
     return [City citiesInManagedObjectContext:databaseManager.managedObjectContext];
 }
 
 + (City *)addWithRepresentation:(NSDictionary *)representation
 {
-    DatabaseManager * databaseManager = [DatabaseManager sharedInstance];
+    DatabaseManager *databaseManager = [DatabaseManager sharedInstance];
     City * city = [City cityWithWorldWeatherData:representation inManagedObjectContext:databaseManager.managedObjectContext];
+    
     [databaseManager executeSynchronizedInsert:city error:nil];
     
     return city;
@@ -108,6 +109,7 @@
 - (void)executeRequestForWeatherInCity:(City *)city withCompletionBlock:(void (^)(Weather * currentWeather, NSArray * weathers))completion
 {
     NSString * cityLatLong = [NSString stringWithFormat:@"%@,%@", city.latitude, city.longitude];
+    
     NSDictionary * parameters = @{@"q":cityLatLong, @"key":kApiKey, @"format":@"json"};
     
     AFHTTPRequestOperationManager *operationManager = [AFHTTPRequestOperationManager manager];

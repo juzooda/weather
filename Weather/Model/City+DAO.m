@@ -9,8 +9,22 @@
 #import "City+DAO.h"
 #import "AppDelegate.h"
 #import "Constants.h"
+#import "DatabaseManager.h"
 
 @implementation City (DAO)
+
+- (id)init
+{
+    // integration with coredata
+    NSManagedObjectContext *context = [[DatabaseManager sharedInstance] managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:kCityEntityName inManagedObjectContext:context];
+    
+    // initialize object
+    self = [[City alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:nil];
+    
+    return self;
+}
+
 
 + (City *)cityFromName:(NSString *)name andCountry:(NSString *)country inManagedObjectContext:(NSManagedObjectContext *)context
 {

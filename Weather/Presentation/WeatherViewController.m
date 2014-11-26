@@ -49,7 +49,7 @@
     [self hideViewElements:YES];
     [self.tutorialView setHidden:YES];
     
-    self.selectedCity = [CityBO getSelected];
+    self.selectedCity = [CityBO applicationLastSelectedCity];
     
     if (self.selectedCity) {
         

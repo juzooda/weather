@@ -15,7 +15,7 @@
 
 + (NSArray *)all;
 + (void)remove:(City*)city;
-+ (City *)getSelected;
++ (City *)applicationLastSelectedCity;
 + (void)setSelectedCity:(City *)city;
 + (City *)addWithRepresentation:(NSDictionary *)representation;
 

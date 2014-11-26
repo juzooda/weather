@@ -18,7 +18,6 @@
 #import "City+DAO.h"
 #import "Constants.h"
 
-
 SpecBegin(CityBO)
 
 describe(@"CityBO functionalities", ^{

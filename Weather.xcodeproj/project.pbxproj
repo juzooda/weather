@@ -27,6 +27,8 @@
 		69A4D3B71A1463FB00CD9A6E /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A4D3B61A1463FB00CD9A6E /* City.m */; };
 		69A4D3BA1A14654E00CD9A6E /* City+DAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A4D3B91A14654E00CD9A6E /* City+DAO.m */; };
 		69E5B1231A191AF50085B3DC /* BackgroungManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E5B1221A191AF50085B3DC /* BackgroungManager.m */; };
+		69ECFB901A25506200186501 /* DatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69ECFB8F1A25506200186501 /* DatabaseManagerTests.m */; };
+		69ECFB921A25529900186501 /* CityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 69ECFB911A25529900186501 /* CityTests.m */; };
 		DF4175CCDFFE0E96FE22344B /* libPods-Weather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E4F31B14E82CB9064CDE15 /* libPods-Weather.a */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		69A4D3B91A14654E00CD9A6E /* City+DAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "City+DAO.m"; path = "Model/City+DAO.m"; sourceTree = "<group>"; };
 		69E5B1211A191AF50085B3DC /* BackgroungManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroungManager.h; path = Model/BackgroungManager.h; sourceTree = "<group>"; };
 		69E5B1221A191AF50085B3DC /* BackgroungManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroungManager.m; path = Model/BackgroungManager.m; sourceTree = "<group>"; };
+		69ECFB8F1A25506200186501 /* DatabaseManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerTests.m; sourceTree = "<group>"; };
+		69ECFB911A25529900186501 /* CityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTests.m; sourceTree = "<group>"; };
 		8229BD655C509A2A04509136 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		847A464623CEC4759CEA3A05 /* libPods-WeatherTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2A52D64D72892FD9CECCBB /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 				696584551A14508800DA70D2 /* WeatherTests.m */,
 				693C2E5E1A17CBAA00D0E9B3 /* DateFormatterTests.m */,
 				696584531A14508800DA70D2 /* Supporting Files */,
+				69ECFB8F1A25506200186501 /* DatabaseManagerTests.m */,
+				69ECFB911A25529900186501 /* CityTests.m */,
 			);
 			path = WeatherTests;
 			sourceTree = "<group>";
@@ -469,6 +475,8 @@
 			files = (
 				693C2E5F1A17CBAA00D0E9B3 /* DateFormatterTests.m in Sources */,
 				696584561A14508800DA70D2 /* WeatherTests.m in Sources */,
+				69ECFB921A25529900186501 /* CityTests.m in Sources */,
+				69ECFB901A25506200186501 /* DatabaseManagerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
